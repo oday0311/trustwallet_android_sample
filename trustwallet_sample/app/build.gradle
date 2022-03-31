@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.fancy.trustwallet_sample"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven {
+            url = uri("https://maven.pkg.github.com/trustwallet/wallet-core")
+            credentials {
+                username = "oday0313"
+                password = "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"
+            }
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation "com.trustwallet:wallet-core:2.7.5"
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
